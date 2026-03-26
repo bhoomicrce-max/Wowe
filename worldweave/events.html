@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorldWeave - Discover Events</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="/" style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span class="logo-icon">🌍</span>
+                        <span class="logo-text">WorldWeave</span>
+                    </a>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="nav-link">Dashboard</a></li>
+                    <li><a href="/events" class="nav-link active">Events</a></li>
+                    <li><a href="/profile" class="nav-link">Profile</a></li>
+                </ul>
+                <div class="user-info">
+                    <div class="level-badge" id="levelBadge">Lvl 1</div>
+                    <div class="xp-display" id="xpDisplay">0 XP</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero hero-events" id="eventsHero">
+            <div class="hero-backdrop">
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
+                <div class="hero-grid"></div>
+            </div>
+            <div class="events-hero-content">
+                <div class="events-hero-text">
+                    <h1 class="glow-text" style="font-size: 3rem; margin-bottom: 0.5rem;">Discover Your Next Experience</h1>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px;">Explore curated collections of Run Clubs, Night Clubs, Café Events, Standups, Workshops, Treks, and House Parties.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Section -->
+        <section class="filter-section luxury-filter" id="filterSection" style="margin-top: -2rem; position: relative; z-index: 10;">
+            <div class="filter-container search-first">
+                <div class="search-wrapper">
+                    <div style="position: relative; width: 100%;">
+                        <span style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-soft); font-size: 1.2rem;">🔍</span>
+                        <input type="text" id="searchInput" class="search-input luxury-input" placeholder="Search events by name, location, or type..." style="padding-left: 2.8rem;">
+                    </div>
+                </div>
+                <div class="filter-chips">
+                    <button class="chip active" data-category="all">All Collections</button>
+                    <button class="chip" data-category="run">🏃 Run Clubs</button>
+                    <button class="chip" data-category="nightclub">🎉 Night Clubs</button>
+                    <button class="chip" data-category="cafe">☕ Cafe Events</button>
+                    <button class="chip" data-category="comedy">🎭 Standups</button>
+                    <button class="chip" data-category="workshop">🛠️ Workshops</button>
+                    <button class="chip" data-category="trek">⛰️ Treks</button>
+                    <button class="chip" data-category="party">🎊 House Parties</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Collections (Coming Soon) -->
+        <section id="categoryCarousels" class="category-carousels-container"></section>
+
+        <section class="discovery-feed" id="discoveryFeed">
+            <div class="feed-container">
+                <div class="feed-header">
+                    <h2 class="glow-text">The Catalog</h2>
+                </div>
+                <div class="events-grid" id="eventsGrid"></div>
+            </div>
+        </section>
+
+        <!-- Live Now Marquee -->
+        <section class="realtime-section" id="realtimeSection" style="margin-top: 4rem;">
+            <div class="realtime-container">
+                <h3 class="stat-label" style="margin-bottom: 1rem;">Happening Right Now</h3>
+                <div class="realtime-scroll" id="realtimeScroll"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="eventPageModal"></div>
+    <div class="toast-container" id="toastContainer"></div>
+    <footer class="footer">
+        <p>&copy; 2026 WorldWeave. Level up your social life.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

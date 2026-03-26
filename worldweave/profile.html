@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorldWeave - Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>.profile-section { display: block !important; }</style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="/" style="display: flex; align-items: center; gap: 0.8rem;">
+                        <span class="logo-icon">🌍</span>
+                        <span class="logo-text">WorldWeave</span>
+                    </a>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="nav-link">Dashboard</a></li>
+                    <li><a href="/events" class="nav-link">Events</a></li>
+                    <li><a href="/profile" class="nav-link active">Profile</a></li>
+                </ul>
+                <div class="user-info">
+                    <div class="level-badge" id="levelBadge">Lvl 1</div>
+                    <div class="xp-display" id="xpDisplay">0 XP</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="profile-section" id="profileSection">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profileAvatar">👤</div>
+                    <div class="profile-info">
+                        <h2 id="profileName">Explorer</h2>
+                        <p class="profile-title" id="profileTitle">Newcomer</p>
+                        <div class="level-progress">
+                            <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+                            <span id="progressText">0 / 100 XP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat"><span class="stat-icon">🎯</span><span class="stat-title">Events Attended</span><span class="stat-value" id="eventsAttended">0</span></div>
+                    <div class="stat"><span class="stat-icon">✨</span><span class="stat-title">Total XP Earned</span><span class="stat-value" id="totalXP">0</span></div>
+                    <div class="stat"><span class="stat-icon">🏆</span><span class="stat-title">Level</span><span class="stat-value" id="userLevel">1</span></div>
+                    <div class="stat"><span class="stat-icon">🎫</span><span class="stat-title">Perks Unlocked</span><span class="stat-value" id="perksUnlocked">0</span></div>
+                </div>
+
+                <!-- Perks Gallery -->
+                <div class="perks-section">
+                    <h3>Privileged Perks</h3>
+                    <div class="perks-grid" id="perksGrid">
+                        <!-- Populated by script.js -->
+                    </div>
+                </div>
+
+                <div class="attended-section">
+                    <h3>Your Event History</h3>
+                    <div class="attended-list" id="attendedList"></div>
+                </div>
+
+                <div class="attended-section"><h3>🌍 Life Journey Timeline</h3><div class="timeline-container" id="memoryTimeline"></div></div>
+                <div id="ringsContainer"></div>
+                <div id="badgesContainer"></div>
+                <div id="leaderboardContainer"></div>
+            </div>
+        </section>
+
+        <section class="profile-section active" id="hostSection">
+            <div class="profile-container glass" style="margin-top: 2rem;">
+                <div class="profile-header"><h2>Host Dashboard</h2></div>
+                <div class="perks-section">
+                    <h3>Quick Event Creator (AI Powered)</h3>
+                    <form id="aiHostForm" class="host-form">
+                        <input type="text" id="hostEventTitle" placeholder="Event Title" class="search-input">
+                        <select id="hostEventCategory" class="search-input">
+                            <option value="run">Run Club</option>
+                            <option value="nightclub">Nightlife</option>
+                        </select>
+                        <button type="button" class="btn-primary" onclick="handleAIEventCreation()">Generate Event</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

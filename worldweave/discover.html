@@ -1,0 +1,225 @@
+<![CDATA[<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorldWeave - Discover Real-World Events</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">🌍</span>
+                    <span class="logo-text">WorldWeave</span>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="discover.html" class="nav-link active">Discover</a></li>
+                    <li><a href="host.html" class="nav-link">Host Portal</a></li>
+                    <li><a href="my-events.html" class="nav-link">My Events</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                    <li><a href="leaderboard.html" class="nav-link">Leaderboard</a></li>
+                </ul>
+                <div class="user-info">
+                    <button class="notification-bell" id="notificationBell">🔔<span class="notification-badge" id="notificationBadge"></span></button>
+                    <div class="level-badge" id="levelBadge">Lvl 1</div>
+                    <div class="xp-display" id="xpDisplay">0 XP</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="hero hero-luxury" id="hero">
+            <div class="hero-backdrop">
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
+                <div class="hero-grid"></div>
+            </div>
+            <div class="hero-shell">
+                <div class="hero-copy">
+                    <span class="hero-kicker">Curated city experiences</span>
+                    <h1 class="hero-title glow-text">A premium way to discover what the city is worth stepping out for.</h1>
+                    <p class="hero-subtitle">From private rooftops to immersive workshops, WorldWeave turns event discovery into a refined lifestyle platform built for taste, momentum, and memorable nights.</p>
+                    <div class="hero-actions">
+                        <button class="cta-button" id="discoverBtn">Explore Events</button>
+                        <a href="host.html" class="btn-secondary hero-secondary">Become a Host</a>
+                    </div>
+                </div>
+                <div class="hero-panel glass">
+                    <div class="hero-panel-top">
+                        <span class="hero-panel-label">Editor’s Selection</span>
+                        <span class="hero-panel-live">Live Curation</span>
+                    </div>
+                    <div class="hero-feature-card">
+                        <div class="hero-feature-visual">✦</div>
+                        <div class="hero-feature-copy">
+                            <p class="hero-feature-title">Private Supper Club</p>
+                            <p class="hero-feature-meta">Tonight · Skyline District · 18 seats left</p>
+                        </div>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="stat-card premium-stat-card">
+                            <span class="stat-value" id="totalEvents">0</span>
+                            <span class="stat-label">Curated Events</span>
+                        </div>
+                        <div class="stat-card premium-stat-card">
+                            <span class="stat-value" id="activeUsers">1.2K</span>
+                            <span class="stat-label">Members</span>
+                        </div>
+                        <div class="stat-card premium-stat-card">
+                            <span class="stat-value" id="xpReward">2-50</span>
+                            <span class="stat-label">XP Rewards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vibe-section" id="vibeSection">
+            <div class="vibe-container">
+                <div class="vibe-header">
+                    <h2>✨ Events for Your Vibe Tonight</h2>
+                    <button class="btn-vibe-refresh" id="refreshVibeBtn">🔄 Refresh Recommendations</button>
+                </div>
+                <div class="personalized-feed" id="personalizedFeed"></div>
+            </div>
+        </section>
+
+        <section class="realtime-section" id="realtimeSection">
+            <div class="realtime-container">
+                <h2>🔥 Happening Right Now</h2>
+                <div class="realtime-scroll" id="realtimeScroll"></div>
+            </div>
+        </section>
+
+        <section class="filter-section" id="filterSection">
+            <div class="filter-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search events...">
+                <div class="filter-chips">
+                    <button class="chip active" data-category="all">All</button>
+                    <button class="chip" data-category="run">🏃 Run Clubs</button>
+                    <button class="chip" data-category="nightclub">🎉 Clubs</button>
+                    <button class="chip" data-category="cafe">☕ Cafés</button>
+                    <button class="chip" data-category="comedy">🎭 Comedy</button>
+                    <button class="chip" data-category="workshop">🛠️ Workshops</button>
+                    <button class="chip" data-category="trek">⛰️ Treks</button>
+                    <button class="chip" data-category="party">🎊 Parties</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="reels-feed" id="reelsFeed">
+            <div class="reels-container">
+                <h2>🎬 Event Reels</h2>
+                <div class="reels-carousel" id="reelsCarousel"></div>
+            </div>
+        </section>
+
+        <section class="discovery-feed" id="discoveryFeed">
+            <div class="feed-container">
+                <div class="events-grid" id="eventsGrid"></div>
+            </div>
+        </section>
+
+        <div class="modal" id="eventPageModal">
+            <div class="modal-content event-page-modal">
+                <button class="modal-close" id="eventPageClose">&times;</button>
+                <div class="event-page-hero" id="eventPageHero">
+                    <div class="event-page-image" id="eventPageImage"></div>
+                    <div class="event-page-overlay">
+                        <div class="event-page-category" id="eventPageCategory"></div>
+                        <div class="event-rating" id="eventPageRating"></div>
+                    </div>
+                </div>
+                <div class="event-page-container">
+                    <div class="event-page-main">
+                        <div class="event-cta-section">
+                            <h1 id="eventPageTitle"></h1>
+                            <div class="cta-row">
+                                <div class="event-price" id="eventPagePrice"></div>
+                                <button class="btn-cta-primary" id="eventPageBookBtn">Book Now</button>
+                            </div>
+                            <div class="event-urgency" id="eventPageUrgency"></div>
+                        </div>
+
+                        <div class="event-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">📅 Date & Time</span>
+                                <span id="eventPageDate"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">📍 Location</span>
+                                <span id="eventPageLocation"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👥 Capacity</span>
+                                <span id="eventPageCapacity"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">⭐ XP Reward</span>
+                                <span id="eventPageXP"></span>
+                            </div>
+                        </div>
+
+                        <div class="event-description-section">
+                            <h3>About This Event</h3>
+                            <p id="eventPageDescription"></p>
+                        </div>
+
+                        <div class="whos-going-section">
+                            <h3>Who's Going (Social Proof)</h3>
+                            <div class="going-avatars" id="eventPageGoingAvatars"></div>
+                            <button class="btn-secondary" id="eventPageViewAttendees">View All Attendees</button>
+                        </div>
+
+                        <div class="group-actions">
+                            <button class="btn-secondary" id="eventPageVoteBtn">🗳️ Group Vote</button>
+                            <button class="btn-secondary" id="eventPageSplitBtn">💰 Split Payment</button>
+                            <button class="btn-secondary" id="eventPageFollowHostBtn">👤 Follow Host</button>
+                        </div>
+
+                        <div class="event-gallery-section">
+                            <h3>Event Gallery</h3>
+                            <div class="gallery-grid" id="eventPageGallery"></div>
+                            <button class="btn-secondary" id="eventPageAddGalleryBtn">📸 Add Photo</button>
+                        </div>
+
+                        <div class="host-card-section" id="hostCardSection">
+                            <h3>Hosted By</h3>
+                            <div class="host-card" id="eventPageHostCard"></div>
+                        </div>
+
+                        <div class="activity-feed-section">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-feed" id="eventPageActivityFeed"></div>
+                        </div>
+                    </div>
+
+                    <div class="event-page-sidebar">
+                        <button class="btn-secondary-large" id="eventPageShareBtn">Share Event</button>
+                        <button class="btn-secondary-large" id="eventPageSaveBtn">💾 Save Event</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 WorldWeave. Discover. Attend. Share. Level Up.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>]]>
